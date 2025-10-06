@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -11,14 +10,52 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <!-- Place favicon.ico in the root directory -->
 
-  <style>  
-    body {
-      background-color: #e9ebee;
-      font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-      font-size: 16px;
-      margin: 0 auto;
-      max-width: 800px;
+  <style> 
+   .cv {
+  width: 40%;     
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+  body {
+  font-size: 25px;
+  display: flex;
+  justify-content: center; /* centre horizontalement */
+  align-items: center;     /* centre verticalement */
+  min-height: 100vh;       /* prend toute la hauteur de la fenêtre */
+  background-color: #e0e0e0;
+  
     }
+    h2 {
+    color: #2c3e50;
+    border-bottom: 1px solid #bdc3c7;
+    padding-bottom: 5px;
+    margin-top: 25px;
+    font-size: 1.3em;
+}
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 50px;
+}
+
+table td {
+    padding: 8px 5px;
+    border-bottom: 1px solid #ecf0f1;
+}
+table tr {
+    padding: 8px 5px;
+    border-bottom: 1px solid #ecf0f1;
+}
+iframe {
+    border: none;
+    margin:0;
+    padding: 0;
+    margin-bottom: 0;
+    width :100% ;
+    height:230px;
+}
   </style>
 
   <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
@@ -27,15 +64,74 @@
 </head>
 
 <body>
-  <nav>
-    <a href="..">🏠 Index</a> / TP1bbbbbb
-  </nav>
-  <h1>TP 1abc</h1>
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <img src="../galilee.png" alt="Logo Galilee" />
+  <div class="cv">
+  <table>
+    <tr>
+      <td>TAGUINE Jedjiga</td>
+      <td>Célibataire</td>
+    </tr>
+    <tr>
+      <td>93 Villetaneuse</td>
+      <td>Permis B</td>
+    </tr>
+    <tr>
+      <td><a href="mailto:taguine.jedjiga@mail.com">taguine.jedjiga@mail.com</a></td>
+      <td></td>
+    </tr>
+  </table>
+  <h2 style="text-align: center; font-size: 28px;">Ingenieur d'etudes et developement</h2>
 
-  <h2><a href="experiences/index.html">Expériences</a></h2>
+  <h2>Formation</h2>
+  <table>
+    <tr>
+      <td>2020</td>
+      <td><a href ="https://www.ummto.dz/fgei/informatique/">Licence en Informatique</a> a l'universite Mouloud Mammeri Tizi-Ouzou </td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td><a href ="https://www.ummto.dz/fgei/informatique/">Master 2 Systemes Informatiques</a> a l'universite Mouloud Mammeri Tizi-Ouzou </td>
+    </tr>
+    <tr>
+      <td>2025</td>
+      <td><a href="https://galilee.univ-paris13.fr/master/master-ingenierie-innovation-images-reseaux-m3ir/">Master 1 3IR</a> a l'universite Sorbonne Paris Nord</td>
+    </tr>
+  </table>
+  <h2>Competences</h2>
+  <table>
+    <tr>
+      <td>Developement</td>
+      <td>Html,CSS, JavaScript </td>
+    </tr>
+    <tr>
+      <td>Base de donnees</td>
+      <td>MySQL, PostgreSQL</td>
+    </tr>
+    <tr>
+      <td>Reseaux</td>
+      <td>LAN, WIFI</td>
+    </tr>
+    <tr>
+      <td>Langues</td>
+      <td>Francais, Anglais, Arabe, Kabyle</td>
+    </tr>
+  </table>
+  <h2>Expériences</h2>
+  <iframe src="experiences/index.html" ></iframe>
+  <h2>Centres d'interets</h2>
+  <table>
+    <tr>
+      <td>Sport</td>
+      <td>Natation , Tennis</td>
+    </tr>
+    <tr>
+      <td>Voyages</td>
+      <td>Italie , Espagne </td>
+    </tr>
+    <tr>
+      <td>Cultures</td>
+      <td>Cinema , Musee</td>
+    </tr>
+  </table>
+  </div>>
 </body>
-
 </html>
