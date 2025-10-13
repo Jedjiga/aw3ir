@@ -14,6 +14,10 @@ window.onload = () => {
                 element.href = `https://www.google.com/maps/search/?api=1&query=${elementValue}`;
             } else if (param[0] === "email") {
                 element.href = `mailto:${elementValue}?subject=Hello!&body=What's up?`;
+            } else if (param[0] === "birthday") {
+                // Formater la date en français
+                const date = new Date(elementValue);
+                element.textContent = date.toLocaleDateString('fr-FR');
             }
         }
     }

@@ -1,85 +1,286 @@
-body {
-    background-color: #f5f7fa;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-}
+/* Styles pour le formulaire TP2 */
 
 form {
     background-color: white;
     border-radius: 16px;
     padding: 16px;
     box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
-    width: 100%;
-    max-width: 500px;
+    margin: 20px 0;
+    border: 1px solid #e1e5e9;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+form:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+form p {
+    margin: 15px 0;
+    transition: all 0.3s ease;
 }
 
 label {
     width: 150px;
     display: inline-block;
     font-weight: bold;
+    vertical-align: top;
+    padding-top: 8px;
+    color: #2c3e50;
+    transition: color 0.3s ease;
 }
 
 input {
     width: 250px;
-    padding: 6px 12px;
-    border-radius: 5px;
-    border: 1px solid gray;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 2px solid #bdc3c7;
     font-size: 1rem;
     box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+input:focus {
+    border-color: #3498db;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+    transform: scale(1.02);
+}
+
+input:hover {
+    border-color: #95a5a6;
+    background-color: #ffffff;
 }
 
 .icon-ok {
-    color: green;
+    color: #27ae60;
     margin-left: 10px;
     display: none;
+    vertical-align: middle;
+    font-size: 1.2em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 input:valid + .icon-ok {
     display: inline-block;
+    animation: bounceIn 0.5s ease;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 input:invalid {
-    border-color: red;
+    border-color: #e74c3c;
+    background-color: #fdf2f2;
 }
 
-form p:last-of-type {
-    
-    margin-left: 155px;;
+input:invalid:focus {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
 }
 
 .btn-primary {
-    border-radius: 5px;
-    padding: 6px 12px;
-    background-color: #0d6efd;
+    border-radius: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #0d6efd, #0a58ca);
     border-color: #0d6efd;
     color: #fff;
     cursor: pointer;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
     width: 250px;
-    
-    
+    border: 1px solid #0d6efd;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-form:invalid input[type="submit"] {
-    background-color: gray;
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0b5ed7, #084298);
+    border-color: #0a58ca;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(13, 110, 253, 0.3);
+}
+
+form:invalid .btn-primary {
+    background: #95a5a6;
+    border-color: #95a5a6;
     cursor: not-allowed;
-}
-a.btn-primary {
-    display: inline-block;
-    margin-bottom: 20px;
-    text-align: center;
-    
+    transform: none;
+    box-shadow: none;
 }
 
+form:invalid .btn-primary:hover {
+    background: #95a5a6;
+    border-color: #95a5a6;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Style pour le label vide du bouton */
+label[for="submit"] {
+    color: transparent;
+    user-select: none;
+}
+
+/* Style pour la page action.html */
+.action-container {
+    background-color: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin: 20px 0;
+    border: 1px solid #e1e5e9;
+    transition: transform 0.2s ease;
+}
+
+.action-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.action-container p {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #2c3e50;
+    padding: 8px 0;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.action-container p:last-child {
+    border-bottom: none;
+}
+
+.action-container a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px dotted transparent;
+}
+
+.action-container a:hover {
+    text-decoration: none;
+    color: #2980b9;
+    border-bottom-color: #2980b9;
+}
+
+/* Bouton Retour amélioré */
+a.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #6c757d, #495057);
+    border: 1px solid #6c757d;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    width: auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+a.btn-primary:hover {
+    background: linear-gradient(135deg, #5a6268, #343a40);
+    border-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+/* Animation pour les résultats */
+.action-container span {
+    display: inline-block;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navigation améliorée */
+nav {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Titres améliorés */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    label {
+        width: 120px;
+    }
+    
+    input {
+        width: 200px;
+    }
+    
+    .btn-primary {
+        width: 200px;
+    }
+    
+    form p {
+        text-align: center;
+    }
+}

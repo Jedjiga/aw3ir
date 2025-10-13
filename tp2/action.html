@@ -1,30 +1,54 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP #2 - Résultats</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="action.js"></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>TP2 - Résultats</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  
+  <style>
+    body {
+      background-color: #e9ebee;
+      font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco",
+        "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+      font-size: 16px;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="action.js"></script>
 </head>
+
 <body>
-    <div style="max-width: 600px; margin: 0 auto;">
-        <a href="index.html" class="btn-primary">⬅️ Retour au formulaire</a>
-        
-        <h1>TP #2 - résultat du formulaire</h1>
-        
-        <div>
-            <p>Bonjour <span id="name"></span> <span id="firstname"></span>,</p>
-            <p>
-                Vous êtes né le <span id="birthday"></span>
-                et habité(e)
-                <a href="" id="address" target="_blank"></a>.
-            </p>
-            <p>
-                Mail :
-                <a href="" id="email"></a>
-            </p>
-        </div>
+  <nav>
+    <a href="..">🏠 Index</a> / <a href="index.html">TP2</a> / Résultats
+  </nav>
+  
+  <h1>TP #2 - résultat du formulaire</h1>
+  
+  <div class="action-container">
+    <a href="index.html" class="btn-primary">⬅️ Retour au formulaire</a>
+    
+    <div>
+      <p>Bonjour <span id="name"></span> <span id="firstname"></span>,</p>
+      <p>
+        Vous êtes né le <span id="birthday"></span>
+        et habité(e)
+        <a href="" id="address" target="_blank"></a>.
+      </p>
+      <p>
+        Mail :
+        <a href="" id="email"></a>
+      </p>
     </div>
+  </div>
+  
 </body>
+
 </html>
