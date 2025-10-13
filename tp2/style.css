@@ -53,6 +53,11 @@ input:invalid {
     border-color: red;
 }
 
+form p:last-of-type {
+    
+    margin-left: 155px;;
+}
+
 .btn-primary {
     border-radius: 5px;
     padding: 6px 12px;
@@ -62,16 +67,19 @@ input:invalid {
     cursor: pointer;
     text-decoration: none;
     font-size: 1rem;
-    width: auto;
+    width: 250px;
+    
+    
 }
 
 form:invalid input[type="submit"] {
     background-color: gray;
     cursor: not-allowed;
 }
-
 a.btn-primary {
     display: inline-block;
     margin-bottom: 20px;
     text-align: center;
+    
 }
+
