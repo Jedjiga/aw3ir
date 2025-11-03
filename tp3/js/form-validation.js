@@ -42,7 +42,7 @@ window.onload = function () {
                     <p class="text-muted mb-0">
                         <small>
                             <i class="bi bi-info-circle"></i>
-                            Les images statiques de Google Maps sont devenues payantes.<br>
+                            
                             Cliquez sur le nom de votre ville pour ouvrir Google Maps.
                         </small>
                     </p>
