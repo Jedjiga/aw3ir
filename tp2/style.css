@@ -1,4 +1,3 @@
-/* Styles pour le formulaire TP2 */
 
 form {
     background-color: white;
@@ -178,7 +177,7 @@ label[for="submit"] {
     border-bottom-color: #2980b9;
 }
 
-/* Bouton Retour amélioré */
+/* Bouton Retour  */
 a.btn-primary {
     display: inline-flex;
     align-items: center;
@@ -223,7 +222,6 @@ a.btn-primary:hover {
     }
 }
 
-/* Navigation améliorée */
 nav {
     background: white;
     padding: 15px 20px;
@@ -244,7 +242,6 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Titres améliorés */
 h1 {
     color: #2c3e50;
     text-align: center;
@@ -266,7 +263,6 @@ h1::after {
     border-radius: 2px;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
     label {
         width: 120px;
