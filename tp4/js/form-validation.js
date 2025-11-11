@@ -2,40 +2,61 @@ window.onload = function () {
   console.log("DOM ready!");
   displayContactList();
 
-  // --- Événement du bouton GPS ---
-  document.querySelector("#gps").addEventListener("click", function (e) {
+  // Bouton GPS
+  document.querySelector("#gps").addEventListener("click", e => {
     e.preventDefault();
     getLocation();
   });
 
-  // --- Événement du bouton Reset ---
-  document.querySelector("#reset").addEventListener("click", function () {
+  // Bouton Reset
+  document.querySelector("#reset").addEventListener("click", () => {
     contactStore.reset();
     displayContactList();
   });
 
-  // --- Validation formulaire ---
-  document.querySelector("#monFormulaire").addEventListener("submit", function (e) {
+  // Validation du formulaire
+  document.querySelector("#monFormulaire").addEventListener("submit", e => {
     e.preventDefault();
     const v = validateForm();
 
     if (v.isValid) {
-      contactStore.add(v.nom, v.prenom, v.birthday, v.adresse, document.querySelector("#email").value);
+      contactStore.add(
+        v.nom,
+        v.prenom,
+        v.birthday,
+        v.adresse,
+        document.querySelector("#email").value
+      );
       displayContactList();
-      showSuccessModal(v.nom, v.prenom, v.birthday, v.ville);
+
+      //  Afficher message de succès
+      const msg = document.querySelector("#messageSuccess");
+      msg.classList.remove("d-none");
+      msg.textContent = "Contact ajouté avec succès.";
+
+      // Masquer après 3 secondes
+      setTimeout(() => msg.classList.add("d-none"), 3000);
+
+      //  Réinitialiser formulaire et compteurs
+      document.querySelector("#monFormulaire").reset();
+      document.querySelectorAll("[data-count]").forEach(el => (el.textContent = "0 car."));
     } else {
-      showErrorModal(v.errorMessage);
+      // Afficher une alerte simple (sans modal)
+      alert("Erreur : " + v.errorMessage);
     }
   });
 };
 
-// --- Fonction compteur de caractères ---
+// --- Compteur de caractères ---
 function calcNbChar(id) {
-  const countElement = document.querySelector(`#${id}`).parentElement.querySelector("[data-count]");
-  countElement.textContent = document.querySelector(`#${id}`).value.length + " car.";
+  const input = document.querySelector(`#${id}`);
+  const countElement =
+    input.parentElement.querySelector("[data-count]") ||
+    input.closest(".mb-3").querySelector("[data-count]");
+  countElement.textContent = input.value.length + " car.";
 }
 
-// --- Validation formulaire ---
+// --- Validation du formulaire ---
 function validateForm() {
   let isValid = true;
   let errorMessage = "";
@@ -60,29 +81,7 @@ function validateForm() {
   return { isValid, errorMessage, nom, prenom, birthday, adresse, ville };
 }
 
-// --- Modals ---
-function showErrorModal(msg) {
-  document.querySelector(".modal-title").textContent = "Erreur dans le formulaire";
-  document.querySelector("#modalBody").innerHTML = `<p>${msg}</p>`;
-  new bootstrap.Modal(document.getElementById("myModal")).show();
-}
-
-function showSuccessModal(nom, prenom, dateNaissance, ville) {
-  const date = new Date(dateNaissance);
-  const d = date.getDate().toString().padStart(2, '0');
-  const m = (date.getMonth() + 1).toString().padStart(2, '0');
-  const y = date.getFullYear();
-  const dateFr = `${d}/${m}/${y}`;
-
-  document.querySelector(".modal-title").textContent = "Bienvenue " + prenom;
-  document.querySelector("#modalBody").innerHTML = `
-    <p><strong>Vous êtes né(e) le ${dateFr}</strong></p>
-    <p>et vous habitez <a href="https://maps.google.com/maps?q=${encodeURIComponent(ville)}" target="_blank">${ville}</a>.</p>
-  `;
-  new bootstrap.Modal(document.getElementById("myModal")).show();
-}
-
-// --- Affichage du tableau des contacts ---
+// --- Afficher la liste des contacts ---
 function displayContactList() {
   const list = contactStore.getList();
   const tbody = document.querySelector("table tbody");
