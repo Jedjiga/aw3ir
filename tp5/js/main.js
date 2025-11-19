@@ -68,6 +68,11 @@ window.onload = function () {
         this.cityWeather = null;
       },
 
+      // ferme la carte météo
+      closeWeather: function () {
+         this.cityWeather = null;
+     },
+
       // récupère la météo pour une ville (via objet city {name: ...})
       meteo: function (_city) {
         if (!this.apiKey || this.apiKey === "") {
