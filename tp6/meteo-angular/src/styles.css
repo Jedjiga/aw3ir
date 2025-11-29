@@ -1,0 +1,39 @@
+/* src/styles.css */
+
+/* Import de Bootstrap */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* Styles globaux */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Amélioration des formulaires */
+.form-control:focus {
+  border-color: #1fc8db;
+  box-shadow: 0 0 0 0.2rem rgba(31, 200, 219, 0.25);
+}
+
+/* Amélioration des boutons */
+.btn-primary {
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(141deg, #0da89f 0%, #1ab7ce 51%, #28a5d9 75%);
+}
+
+/* Style pour les breadcrumbs */
+.breadcrumb {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

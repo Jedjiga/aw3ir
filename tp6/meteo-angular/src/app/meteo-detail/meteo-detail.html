@@ -1,0 +1,119 @@
+
+<div class="container mt-4">
+
+  <!-- Météo du jour -->
+  <div *ngIf="meteo && meteo.cod == 200">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/">🏠</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Météo pour {{meteo.name}}
+        </li>
+      </ol>
+    </nav>
+
+    <div class="card" style="max-width: 500px; margin: 0 auto;">
+      <div class="card-header">
+        {{ meteo.name }} / {{ meteo.dt * 1000 | date : "EEEE d LLLL HH:mm" }}
+      </div>
+      
+      <!-- Carte Google Maps -->
+      <a
+        href="http://maps.google.com/maps?q={{ latlon }}&ll={{ latlon }}&z=5"
+        target="_blank">
+        <img
+          class="card-img-top"
+          src="https://maps.googleapis.com/maps/api/staticmap?markers={{
+            latlon
+          }}&zoom=5&size=500x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg"
+          alt="Carte de {{ meteo.name }}"
+          style="width: 100%;"
+          (error)="onImageError($event)" />
+      </a>
+      
+      <div class="card-body text-center">
+        <h5 class="card-title">
+          <span style="font-size: 3rem;">{{ getWeatherIcon() }}</span>
+          <br>
+          <span style="font-size: 2rem;">{{meteo.main.temp | number:'1.0-0'}}°C</span>
+        </h5>
+        <p class="card-text text-capitalize">{{meteo.weather[0].description}}</p>
+      </div>
+      
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between">
+          <span>☁️ Nuage</span>
+          <strong>{{meteo.clouds.all}}%</strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>💧 Humidité</span>
+          <strong>{{meteo.main.humidity}}%</strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>💨 Vent</span>
+          <strong>{{meteo.wind.speed}} km/h</strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>🌅 Levé du soleil</span>
+          <strong>{{meteo.sys.sunrise * 1000 | date: 'HH:mm'}}</strong>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>🌇 Couché du soleil</span>
+          <strong>{{meteo.sys.sunset * 1000 | date: 'HH:mm'}}</strong>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Prévisions sur 5 jours -->
+  <div *ngIf="dailyForecast && dailyForecast.length > 0" class="mt-4">
+    <h3 class="text-center mb-4">📅 Prévisions sur 5 jours</h3>
+    
+    <div class="row">
+      <div 
+        *ngFor="let day of dailyForecast" 
+        class="col-12 col-md-6 col-lg mb-3">
+        <div class="card h-100 text-center" style="box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <div class="card-header bg-light">
+            <strong>{{ day.date * 1000 | date: 'EEE d MMM' }}</strong>
+          </div>
+          <div class="card-body">
+            <div style="font-size: 3rem;">{{ day.icon }}</div>
+            <h4 class="my-2">
+              <span class="text-primary">{{day.tempMax | number:'1.0-0'}}°</span>
+              <small class="text-muted">/ {{day.tempMin | number:'1.0-0'}}°</small>
+            </h4>
+            <p class="card-text text-capitalize small">{{ day.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message d'erreur -->
+  <div *ngIf="meteo && meteo.cod != 200" class="alert alert-danger text-center">
+    {{meteo.message}} (erreur {{meteo.cod}})
+    <br>
+    <a routerLink="/" class="btn btn-primary mt-2">🏠 Retour</a>
+  </div>
+
+  <!-- Chargement -->
+  <div *ngIf="!meteo" class="text-center py-5">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"></div>
+    <p class="mt-3">Chargement...</p>
+  </div>
+
+</div>
+
+<style>
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+  }
+</style>
